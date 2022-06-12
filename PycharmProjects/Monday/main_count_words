@@ -1,0 +1,51 @@
+# Read text from a file, and count the occurence of words in that text
+# Example:
+# count_words("The cake is done. It is a big cake!") 
+# --> {"cake":2, "big":1, "is":2, "the":1, "a":1, "it":1}
+
+def read_file_content(filename):
+    # [assignment] Add your code here
+    read_text = open(filename, "r")
+    
+    return read_text
+
+
+def count_words():
+    rtext = read_file_content("./story.txt")
+    
+    # Make a dictionary with no entries.
+    d = dict()
+    
+    # Iterate over the entire file's lines. 
+    for textline in rtext:
+        # Remove the newline character and any leading spaces.
+        textline = textline.strip()
+      
+        # To avoid case mismatches, 
+        #convert the characters in the line to lowercase.
+        textline = textline.lower()
+      
+        # Break the line up into words.
+        splitwords = textline.split(" ")
+      
+        # Repeat for each word in a line
+        for word in splitwords:
+            # Determine if the word is in the dictionary
+            if word in d:
+                # Increment word count by 1
+                d[word] = d[word] + 1
+            else:
+                # Insert the word into the dictionary with count 1
+                d[word] = 1
+    
+    return d
+    
+    
+    
+    
+    
+    
+words = count_words()     
+# Print the dictionary's contents
+for key in list(words.keys()):
+    print(key, ":", words[key])
